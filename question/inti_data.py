@@ -9,20 +9,20 @@ def init_data():
         while if_negative <= 1:
             operators = 2
             while operators < 10:
-                return_list = main(5, operators, if_negative, if_pow, 9)
+                return_list = main(20, operators, if_negative, if_pow, 9)
                 i = 0
-                quest: str
-                answer_fraction: str
-                answer_flo: str
                 while i < return_list.__len__():
                     quest = return_list[i]
                     i += 1
                     answer_fraction = return_list[i]
                     i += 1
                     answer_flo = return_list[i]
+                    if Question.objects.filter(question=quest):
+                        operators -= 1
+                        break
                     Question.objects.create(question=quest, question_if_negative=if_negative, question_if_pow=if_pow,
-                                            answer_float=answer_flo, answer_Fraction=answer_fraction)
-                    print('saved')
+                                            answer_float=answer_flo, answer_Fraction=answer_fraction,
+                                            question_operators_num=operators)
                     i = i + 1
                 operators += 1
             if_negative += 1
