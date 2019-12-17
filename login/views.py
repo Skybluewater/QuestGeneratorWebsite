@@ -8,7 +8,7 @@ import hashlib
 
 def login(request):
     if request.session.get('is_login', None):
-        return redirect('/login')
+        return redirect("SouSouSou:main")
     if request.method == "GET":
         request.session['login_from'] = request.META.get('HTTP_REFERER', '/')
     if request.method == "POST":
@@ -23,7 +23,7 @@ def login(request):
                     request.session['user_id'] = user.id
                     request.session['user_name'] = user.name
                     if (request.session['login_from'] == '/'):
-                        return redirect('/login')
+                        return redirect('SouSouSou:main')
                     else:
                         return HttpResponseRedirect(request.session['login_from'])
                 else:
@@ -39,7 +39,7 @@ def login(request):
 def register(request):
     if request.session.get('is_login', None):
         # 登录状态不允许注册。你可以修改这条原则！
-        return redirect('/login')
+        return redirect('SouSouSou:main')
     if request.method == "POST":
         register_form = RegisterForm(request.POST)
 
@@ -80,13 +80,13 @@ def register(request):
 def logout(request):
     if not request.session.get('is_login', None):
         # 如果本来就未登录，也就没有登出一说
-        return redirect('/login')
+        return redirect('SouSouSou:main')
     request.session.flush()
     # 或者使用下面的方法
     # del request.session['is_login']
     # del request.session['user_id']
     # del request.session['user_name']
-    return redirect('/login')
+    return redirect('SouSouSou:main')
 
 
 def hash_code(s, salt='mysite'):  # 加点盐

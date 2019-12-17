@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'captcha',
     'question',
     'reset_passowrd',
-
+    'SouSouSou',
 ]
 
 MIDDLEWARE = [
