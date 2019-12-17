@@ -22,4 +22,6 @@ urlpatterns = [
     path('login/', views.login),
     path('logout/', views.logout),
     path('register/', views.register),
+    path('reset_password/', include('reset_passowrd.urls')),
+    path(" captcha/", include("captcha.urls")),
 ]
