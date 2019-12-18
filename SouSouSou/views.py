@@ -3,6 +3,7 @@ from question.models import Question
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 import random
+from django.core.paginator import Paginator
 
 
 def class_list(request):
@@ -28,7 +29,6 @@ def quest_generator(request):
             operator = g_form.cleaned_data['operators']
             quest = get_ls(operator=operator, if_pow=if_pow, if_neg=if_neg)
             i = 0
-            print(quest)
             ot_ls = []
             while i < quantity:
                 rand = random.randint(0, quest.__len__() - 1)

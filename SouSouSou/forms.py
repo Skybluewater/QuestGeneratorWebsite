@@ -27,7 +27,6 @@ class DSform(forms.Form):
     if_fa = (
         ('True', "是"),
         ('False', "否"),
-        ('Both', "我都要"),
     )
     potyp = (
         ('True', "^"),

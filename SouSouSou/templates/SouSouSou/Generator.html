@@ -108,7 +108,16 @@
                     </form>
                 {% elif type == "POST" %}
                     {% for out in output_list %}
-
+                        <div class="entry-meta">
+                            <span class="name"><a href="#">乘方 {{ out.question_if_pow }}</a></span>
+                            <span class="name"><a href="#">负数 {{ out.question_if_negative }}</a></span>
+                            <span class="name"><a href="#">操作符数 {{ out.question_operators_num }}</a></span>
+                        </div>
+                        {% if if_fraction == "True" %}
+                            <h3>{{ out.question }} = {{ out.answer_Fraction }}</h3>
+                        {% else %}
+                            <h3>{{ out.question }} = {{ out.answer_float }}</h3>
+                        {% endif %}
                     {% endfor %}
                 {% endif %}
             </div>
