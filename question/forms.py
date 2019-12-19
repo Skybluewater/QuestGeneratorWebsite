@@ -44,12 +44,11 @@ class DSform(forms.Form):
 
 
 class Form5(forms.Form):
-    Kt = {}
-    Kt[0] = forms.CharField(max_length=128)
-    Kt[1] = forms.CharField(max_length=128)
-    Kt[2] = forms.CharField(max_length=128)
-    Kt[3] = forms.CharField(max_length=128)
-    Kt[4] = forms.CharField(max_length=128)
+    Kt1 = forms.CharField(max_length=128)
+    Kt2 = forms.CharField(max_length=128)
+    Kt3 = forms.CharField(max_length=128)
+    Kt4 = forms.CharField(max_length=128)
+    Kt5 = forms.CharField(max_length=128)
     answer_id = forms.IntegerField()
 
     def __init__(self, *args, **kwargs):

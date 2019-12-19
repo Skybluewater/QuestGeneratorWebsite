@@ -66,14 +66,13 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                    {% for out in output_list %}
-                        {{ out.question }}
-                    {% endfor %}
                 <form method="POST" action="Question_list.html">
                     {% csrf_token %}
-                    {% for fp in form.Kt %}
-                        {{ fp }}
-                    {% endfor %}
+                    <h5>{{ output_list.0.question }} = {{ form.Kt1 }}</h5>
+                    <h5>{{ output_list.1.question }} = {{ form.Kt2 }}</h5>
+                    <h5>{{ output_list.2.question }} = {{ form.Kt3 }}</h5>
+                    <h5>{{ output_list.3.question }} = {{ form.Kt4 }}</h5>
+                    <h5>{{ output_list.4.question }} = {{ form.Kt5 }}</h5>
                     <button type="submit" class="btn btn-primary">完成</button>
                 </form>
             </div>
