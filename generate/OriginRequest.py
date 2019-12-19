@@ -1,6 +1,6 @@
 import random
 from copy import deepcopy
-from Generator.solve import solvable
+from generate.solve import solvable
 
 
 class BiTree:
