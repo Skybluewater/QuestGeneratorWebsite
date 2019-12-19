@@ -17,15 +17,10 @@ class Question(models.Model):
 
 
 class Answer(models.Model):
+    question = models.ForeignKey(Question, on_delete=models.CASCADE, null=True)
+    answer_id = models.ForeignKey(History, on_delete=models.CASCADE, null=True)
+
+
+class WrongAnswer(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    answer_if_correct = models.BooleanField(default=False)
-    if_fra = models.BooleanField(default=False)
-    answer_id = models.ForeignKey(History, on_delete=models.CASCADE)
     answer_if_answered_again = models.BooleanField(default=False)
-
-    def __get_answer_type_id__(self):
-        return self.answer_id
-
-    def __answer_type_id_increase__(self):
-        self.answer_id = self.answer_id + 1
-

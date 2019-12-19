@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-{% block title %}小猿搜题----主页{% endblock %}
+{% block title %}小学生恨死的题目生成器{% endblock %}
 {% block navbar %}
     <nav class="navbar navbar-default">
         <div class="container-fluid">
@@ -66,8 +66,16 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <br>
-
+                    {% for out in output_list %}
+                        {{ out.question }}
+                    {% endfor %}
+                <form method="POST" action="Question_list.html">
+                    {% csrf_token %}
+                    {% for fp in form.Kt %}
+                        {{ fp }}
+                    {% endfor %}
+                    <button type="submit" class="btn btn-primary">完成</button>
+                </form>
             </div>
         </div>
     </div>

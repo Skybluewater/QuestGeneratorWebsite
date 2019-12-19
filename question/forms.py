@@ -2,7 +2,12 @@ from django import forms
 
 
 class DSform(forms.Form):
-    quantity = forms.IntegerField(label="客官要几个题", min_value=0, max_value=50)
+    qunt = (
+        ('5', "给爷先来5个"),
+        ('10', "少废话再来5个"),
+        ('20', "20个让爷做到爽"),
+    )
+    quantity = forms.ChoiceField(label="想来几个题爽", choices=qunt)
     optr = (
         ('2', "简单难度2"),
         ('3', "简单难度3"),
@@ -13,20 +18,20 @@ class DSform(forms.Form):
         ('8', "小学生都哭了的难度8"),
         ('9', "小学生都哭了的难度9"),
     )
-    operators = forms.MultipleChoiceField(label="客官来几个符号", choices=optr)
+    operators = forms.MultipleChoiceField(label="爷来几个符号", choices=optr)
     if_pw = (
-        ('True', "是"),
-        ('False', "否"),
-        ('Both', "我都要"),
+        ('True', "要"),
+        ('False', "不要"),
+        ('Both', "爷都要"),
     )
     if_ng = (
-        ('True', "是"),
-        ('False', "否"),
-        ('Both', "我都要"),
+        ('True', "要"),
+        ('False', "不要"),
+        ('Both', "爷都要"),
     )
     if_fa = (
-        ('True', "是"),
-        ('False', "否"),
+        ('True', "要"),
+        ('False', "不要"),
     )
     potyp = (
         ('True', "^"),
@@ -36,3 +41,17 @@ class DSform(forms.Form):
     if_neg = forms.ChoiceField(label="负数", choices=if_ng)
     if_fra = forms.ChoiceField(label="分数", choices=if_fa)
     pow_type = forms.ChoiceField(label="类型", choices=potyp)
+
+
+class Form5(forms.Form):
+    Kt = {}
+    Kt[0] = forms.CharField(max_length=128)
+    Kt[1] = forms.CharField(max_length=128)
+    Kt[2] = forms.CharField(max_length=128)
+    Kt[3] = forms.CharField(max_length=128)
+    Kt[4] = forms.CharField(max_length=128)
+    answer_id = forms.IntegerField()
+
+    def __init__(self, *args, **kwargs):
+        # 执行父类构造方法
+        super(Form5, self).__init__(*args, **kwargs)

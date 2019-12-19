@@ -24,5 +24,6 @@ urlpatterns = [
     path('register/', views.register),
     path('reset_password/', include('reset_passowrd.urls')),
     path(" captcha/", include("captcha.urls")),
-    path('sou/', include("SouSouSou.urls"))
+    path('sou/', include("SouSouSou.urls")),
+    path('generate/', include("question.urls")),
 ]
