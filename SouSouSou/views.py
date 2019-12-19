@@ -1,9 +1,8 @@
 from .forms import DSform
 from question.models import Question
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render
 from django.http import HttpResponse
 import random
-from django.core.paginator import Paginator
 
 
 def class_list(request):
@@ -33,6 +32,9 @@ def quest_generator(request):
             while i < quantity:
                 rand = random.randint(0, quest.__len__() - 1)
                 quest[rand].question = string_change(quest[rand].question, potp)
+                if if_fra == 'False':
+                    if float(quest[rand].answer_float).is_integer():
+                        quest[rand].answer_float = int(float(quest[rand].answer_float))
                 ot_ls.append(quest[rand])
                 quest.pop(rand)
                 i += 1
@@ -54,8 +56,8 @@ def string_change(string: str, potp):
 def get_ls(operator: list, if_pow, if_neg):
     i = 0
     rt_ls = []
-    if if_neg == 'both':
-        if if_pow == 'both':
+    if if_neg == 'Both':
+        if if_pow == 'Both':
             while i < operator.__len__():
                 quest = Question.objects.filter(question_operators_num=operator[i])
                 i += 1
@@ -73,25 +75,15 @@ def get_ls(operator: list, if_pow, if_neg):
                     rt_ls.append(quest[j])
                     j += 1
             return rt_ls
-    elif if_pow == 'both':
-        if if_neg == 'both':
-            while i < operator.__len__():
-                quest = Question.objects.filter(question_operators_num=operator[i])
-                i += 1
-                j = 0
-                while j < quest.__len__():
-                    rt_ls.append(quest[j])
-                    j += 1
-            return rt_ls
-        else:
-            while i < operator.__len__():
-                quest = Question.objects.filter(question_operators_num=operator[i], question_if_pow=if_pow)
-                i += 1
-                j = 0
-                while j < quest.__len__():
-                    rt_ls.append(quest[j])
-                    j += 1
-            return rt_ls
+    elif if_pow == 'Both':
+        while i < operator.__len__():
+            quest = Question.objects.filter(question_operators_num=operator[i], question_if_pow=if_pow)
+            i += 1
+            j = 0
+            while j < quest.__len__():
+                rt_ls.append(quest[j])
+                j += 1
+        return rt_ls
     else:
         while i < operator.__len__():
             quest = Question.objects.filter(question_if_negative=if_neg,
