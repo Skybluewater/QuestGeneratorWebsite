@@ -1,5 +1,5 @@
 from .models import Question
-from Generator.main import main
+from generate.main import main
 
 
 def init_data():
