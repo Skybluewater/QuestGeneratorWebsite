@@ -43,7 +43,7 @@ def post(request):
 
 def user_confirm(request):
     if request.session.get('is_login', None):
-        return redirect('/blog')
+        return redirect('SouSouSou:main')
     if request.method == "POST":
         message = ''
         username_form = UserForm(request.POST)
@@ -68,7 +68,7 @@ def user_confirm(request):
 
 def send_email(email, code):
     from django.core.mail import EmailMultiAlternatives
-    subject = '来自矢呼的密码确认邮件'
+    subject = '来自猿题库的密码确认邮件'
     text_content = '''如果你看到这条消息，说明你的邮箱服务器不提供HTML链接功能，请联系管理员!'''
     html_content = '''
                         <p>感谢使用</p>
@@ -84,7 +84,7 @@ def send_email(email, code):
 def user_reset(request):
     if request.session.get('is_login', None):
         # 登录状态不允许注册。你可以修改这条原则！
-        return redirect('/blog')
+        return redirect('SouSouSou:main')
     if request.method == "POST":
         if request.session.get('user_id', None):
             usercode_form = UserCode(request.POST)
