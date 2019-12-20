@@ -66,15 +66,15 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <form method="POST" action="{% url 'Quest_Generator:Answer' 5 answer_id %}">
-                    {% csrf_token %}
-                    <h5>{{ output_list.0.question }} = {{ form.Kt1 }}</h5>
-                    <h5>{{ output_list.1.question }} = {{ form.Kt2 }}</h5>
-                    <h5>{{ output_list.2.question }} = {{ form.Kt3 }}</h5>
-                    <h5>{{ output_list.3.question }} = {{ form.Kt4 }}</h5>
-                    <h5>{{ output_list.4.question }} = {{ form.Kt5 }}</h5>
-                    <button type="submit" class="btn btn-primary">完成</button>
-                </form>
+                <h3>你的用时{{ time }}</h3>
+                <h3>你的分数{{ score }}</h3>
+                {% for outs in output_list %}
+                    {% if if_fra %}
+                        <h4>你错的题{{ outs.question }} 的答案应该是 {{ outs.answer_Fraction }}</h4>
+                    {% else %}
+                        <h4>你错的题{{ outs.question }} 的答案应该是 {{ outs.answer_float }}</h4>
+                    {% endif %}
+                {% endfor %}
             </div>
         </div>
     </div>

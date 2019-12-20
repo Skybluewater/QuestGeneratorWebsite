@@ -49,8 +49,5 @@ class Form5(forms.Form):
     Kt3 = forms.CharField(max_length=128)
     Kt4 = forms.CharField(max_length=128)
     Kt5 = forms.CharField(max_length=128)
-    answer_id = forms.IntegerField()
 
-    def __init__(self, *args, **kwargs):
-        # 执行父类构造方法
-        super(Form5, self).__init__(*args, **kwargs)
+

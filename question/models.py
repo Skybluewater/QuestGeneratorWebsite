@@ -22,5 +22,7 @@ class Answer(models.Model):
 
 
 class WrongAnswer(models.Model):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    question = models.ForeignKey(Question, on_delete=models.CASCADE, null=True)
+    answer_id = models.ForeignKey(History, on_delete=models.CASCADE, null=True)
     answer_if_answered_again = models.BooleanField(default=False)
+    type = models.BooleanField(default=False)

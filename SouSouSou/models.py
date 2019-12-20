@@ -1,5 +1,6 @@
 from django.db import models
 from login.models import User
+from django.utils import timezone
 
 
 class History(models.Model):
@@ -10,9 +11,5 @@ class History(models.Model):
     quantity = models.IntegerField(default=0)
     if_fra = models.BooleanField(default=False)
 
-    def __get_answer_id__(self):
-        return self.answer_id
-
-    def __answer_id_increase__(self):
-        self.answer_id = self.answer_id + 1
-
+    def __set_end_time__(self):
+        self.end_time = timezone.now()
