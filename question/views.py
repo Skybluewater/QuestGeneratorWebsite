@@ -5,7 +5,6 @@ from SouSouSou.models import History
 from SouSouSou.views import get_ls, string_change
 import random
 from .models import Answer, WrongAnswer
-from django.utils import timezone
 
 
 # Create your views here.
@@ -67,9 +66,10 @@ def confirm(request, num, answer_id):
                 answer[3] = form.cleaned_data['Kt4']
                 answer[4] = form.cleaned_data['Kt5']
                 history = History.objects.get(id=answer_id)
+                if history.end_time != None:
+                    return HttpResponse('您已经提交过,请勿重复提交!')
                 history.__set_end_time__()
                 time = history.end_time - history.start_time
-                history.save()
                 as_list = Answer.objects.filter(answer_id=history)
                 i = 0
                 s = 5
@@ -98,6 +98,8 @@ def confirm(request, num, answer_id):
                                 ot_ls.append(as_list[i].question)
                                 s = s - 1
                     i = i + 1
+                history.score = s
+                history.save()
                 context = {'output_list': ot_ls, 'score': s, 'time': time, 'if_fra': history.if_fra}
                 return render(request, 'question/your_score.html', context)
             return HttpResponse('请重新填写表单')
