@@ -13,12 +13,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/blog">猿题库</a>
+                <a class="navbar-brand" href="{% url 'SouSouSou:main' %}">猿题库</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="my-nav">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="/blog">主页</a></li>
+                    <li class="active"><a href="{% url 'SouSouSou:main' %}">主页</a></li>
                     <li class="align-baseline"><a href="#">小猿搜题</a></li>
                 </ul>
                 <form class="navbar-form navbar-left">
@@ -46,10 +46,10 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-haspopup="true"
-                               aria-expanded="false">Dropdown <span class="caret"></span></a>
+                               aria-expanded="false">登录更精彩噢<span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Something else here</a></li>
+                                <li><a href="#">为小学生出题</a></li>
+                                <li><a href="#">给我打钱感谢我</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="">联系我们</a></li>
                             </ul>
@@ -67,7 +67,12 @@
         <div class="row">
             <div class="col-12">
                 <br>
-
+                <a href="{% url 'Quest_Generator:Generator' %}">
+                    <h3>出题考考自己?</h3>
+                </a>
+                <a href="{% url 'SouSouSou:Generator' %}">
+                    <h3>给儿子儿媳出出题?</h3>
+                </a>
             </div>
         </div>
     </div>

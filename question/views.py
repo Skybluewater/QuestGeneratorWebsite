@@ -227,3 +227,5 @@ def confirm(request, num, answer_id):
                 return HttpResponse('请重新填写表单')
     return HttpResponse('非法的提交操作')
 
+
+#def History(request):

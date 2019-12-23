@@ -15,8 +15,6 @@ def test(request):
 
 
 def quest_generator(request):
-    if not request.session.get('is_login', None):
-        return HttpResponse('您尚未登陆')
     if request.method == 'POST':
         g_form = DSform(request.POST)
         if g_form.is_valid():
