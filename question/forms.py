@@ -51,3 +51,37 @@ class Form5(forms.Form):
     Kt5 = forms.CharField(max_length=128)
 
 
+class Form10(forms.Form):
+    Kt1 = forms.CharField(max_length=128)
+    Kt2 = forms.CharField(max_length=128)
+    Kt3 = forms.CharField(max_length=128)
+    Kt4 = forms.CharField(max_length=128)
+    Kt5 = forms.CharField(max_length=128)
+    Kt6 = forms.CharField(max_length=128)
+    Kt7 = forms.CharField(max_length=128)
+    Kt8 = forms.CharField(max_length=128)
+    Kt9 = forms.CharField(max_length=128)
+    Kt10 = forms.CharField(max_length=128)
+
+
+class Form20(forms.Form):
+    Kt1 = forms.CharField(max_length=128)
+    Kt2 = forms.CharField(max_length=128)
+    Kt3 = forms.CharField(max_length=128)
+    Kt4 = forms.CharField(max_length=128)
+    Kt5 = forms.CharField(max_length=128)
+    Kt6 = forms.CharField(max_length=128)
+    Kt7 = forms.CharField(max_length=128)
+    Kt8 = forms.CharField(max_length=128)
+    Kt9 = forms.CharField(max_length=128)
+    Kt10 = forms.CharField(max_length=128)
+    Kt11 = forms.CharField(max_length=128)
+    Kt12 = forms.CharField(max_length=128)
+    Kt13 = forms.CharField(max_length=128)
+    Kt14 = forms.CharField(max_length=128)
+    Kt15 = forms.CharField(max_length=128)
+    Kt16 = forms.CharField(max_length=128)
+    Kt17 = forms.CharField(max_length=128)
+    Kt18 = forms.CharField(max_length=128)
+    Kt19 = forms.CharField(max_length=128)
+    Kt20 = forms.CharField(max_length=128)

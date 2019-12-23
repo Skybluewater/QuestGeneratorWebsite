@@ -66,15 +66,58 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <form method="POST" action="{% url 'Quest_Generator:Answer' 5 answer_id %}">
-                    {% csrf_token %}
-                    <h5>{{ output_list.0.question }} = {{ form.Kt1 }}</h5>
-                    <h5>{{ output_list.1.question }} = {{ form.Kt2 }}</h5>
-                    <h5>{{ output_list.2.question }} = {{ form.Kt3 }}</h5>
-                    <h5>{{ output_list.3.question }} = {{ form.Kt4 }}</h5>
-                    <h5>{{ output_list.4.question }} = {{ form.Kt5 }}</h5>
-                    <button type="submit" class="btn btn-primary">完成</button>
-                </form>
+                {% if quantity == '5' %}
+                    <form method="POST" action="{% url 'Quest_Generator:Answer' 5 answer_id %}">
+                        {% csrf_token %}
+                        <h5>{{ output_list.0.question }} = {{ form.Kt1 }}</h5>
+                        <h5>{{ output_list.1.question }} = {{ form.Kt2 }}</h5>
+                        <h5>{{ output_list.2.question }} = {{ form.Kt3 }}</h5>
+                        <h5>{{ output_list.3.question }} = {{ form.Kt4 }}</h5>
+                        <h5>{{ output_list.4.question }} = {{ form.Kt5 }}</h5>
+                        <button type="submit" class="btn btn-primary">完成</button>
+                    </form>
+                {% endif %}
+                {% if quantity == '10' %}
+                    <form method="POST" action="{% url 'Quest_Generator:Answer' 10 answer_id %}">
+                        {% csrf_token %}
+                        <h5>{{ output_list.0.question }} = {{ form.Kt1 }}</h5>
+                        <h5>{{ output_list.1.question }} = {{ form.Kt2 }}</h5>
+                        <h5>{{ output_list.2.question }} = {{ form.Kt3 }}</h5>
+                        <h5>{{ output_list.3.question }} = {{ form.Kt4 }}</h5>
+                        <h5>{{ output_list.4.question }} = {{ form.Kt5 }}</h5>
+                        <h5>{{ output_list.5.question }} = {{ form.Kt6 }}</h5>
+                        <h5>{{ output_list.6.question }} = {{ form.Kt7 }}</h5>
+                        <h5>{{ output_list.7.question }} = {{ form.Kt8 }}</h5>
+                        <h5>{{ output_list.8.question }} = {{ form.Kt9 }}</h5>
+                        <h5>{{ output_list.9.question }} = {{ form.Kt10 }}</h5>
+                        <button type="submit" class="btn btn-primary">完成</button>
+                    </form>
+                {% endif %}
+                {% if quantity == '20' %}
+                    <form method="POST" action="{% url 'Quest_Generator:Answer' 20 answer_id %}">
+                        <h5>{{ output_list.0.question }} = {{ form.Kt1 }}</h5>
+                        <h5>{{ output_list.1.question }} = {{ form.Kt2 }}</h5>
+                        <h5>{{ output_list.2.question }} = {{ form.Kt3 }}</h5>
+                        <h5>{{ output_list.3.question }} = {{ form.Kt4 }}</h5>
+                        <h5>{{ output_list.4.question }} = {{ form.Kt5 }}</h5>
+                        <h5>{{ output_list.5.question }} = {{ form.Kt6 }}</h5>
+                        <h5>{{ output_list.6.question }} = {{ form.Kt7 }}</h5>
+                        <h5>{{ output_list.7.question }} = {{ form.Kt8 }}</h5>
+                        <h5>{{ output_list.8.question }} = {{ form.Kt9 }}</h5>
+                        <h5>{{ output_list.9.question }} = {{ form.Kt10 }}</h5>
+                        <h5>{{ output_list.10.question }} = {{ form.Kt11 }}</h5>
+                        <h5>{{ output_list.11.question }} = {{ form.Kt12 }}</h5>
+                        <h5>{{ output_list.12.question }} = {{ form.Kt13 }}</h5>
+                        <h5>{{ output_list.13.question }} = {{ form.Kt14 }}</h5>
+                        <h5>{{ output_list.14.question }} = {{ form.Kt15 }}</h5>
+                        <h5>{{ output_list.15.question }} = {{ form.Kt16 }}</h5>
+                        <h5>{{ output_list.16.question }} = {{ form.Kt17 }}</h5>
+                        <h5>{{ output_list.17.question }} = {{ form.Kt18 }}</h5>
+                        <h5>{{ output_list.18.question }} = {{ form.Kt19 }}</h5>
+                        <h5>{{ output_list.19.question }} = {{ form.Kt20 }}</h5>
+                        <button type="submit" class="btn btn-primary">完成</button>
+                    </form>
+                {% endif %}
             </div>
         </div>
     </div>
