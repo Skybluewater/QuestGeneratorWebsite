@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-{% block title %}小猿搜题----主页{% endblock %}
+{% block title %}小学生恨死的题目生成器{% endblock %}
 {% block navbar %}
     <nav class="navbar navbar-default">
         <div class="container-fluid">
@@ -46,10 +46,10 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-haspopup="true"
-                               aria-expanded="false">登录更精彩噢<span class="caret"></span></a>
+                               aria-expanded="false">Dropdown <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">为小学生出题</a></li>
-                                <li><a href="#">给我打钱感谢我</a></li>
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Something else here</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="">联系我们</a></li>
                             </ul>
@@ -66,13 +66,15 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <br>
-                <a href="{% url 'Quest_Generator:Generator' %}">
-                    <h3>出题考考自己?</h3>
-                </a>
-                <a href="{% url 'SouSouSou:Generator' %}">
-                    <h3>给儿子儿媳出出题?</h3>
-                </a>
+                {% for outs in output_list %}
+                    <div class="entry-meta">
+                        <span class="name"><a href="#">乘方 {{ outs.question_if_pow }}</a></span>
+                        <span class="name"><a href="#">负数 {{ outs.question_if_negative }}</a></span>
+                        <span class="name"><a href="#">操作符数 {{ outs.question_operators_num }}</a></span>
+                    </div>
+                    <h4>你错的题{{ outs.question }} 的分数答案应该是 {{ outs.answer_Fraction }}</h4>
+                    <h4>它的小数的答案应该是 {{ outs.answer_float }}</h4>
+                {% endfor %}
             </div>
         </div>
     </div>

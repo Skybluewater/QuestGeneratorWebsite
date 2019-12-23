@@ -62,7 +62,6 @@ def confirm(request, num, answer_id):
     if request.method == "POST":
         if num == 5:
             form = Form5(request.POST)
-            print(request.POST)
             if form.is_valid():
                 answer = {}
                 answer[0] = form.cleaned_data['Kt1']
@@ -228,4 +227,18 @@ def confirm(request, num, answer_id):
     return HttpResponse('非法的提交操作')
 
 
-#def History(request):
+def youtube(request):
+    if not request.session.get('is_login', None):
+        return HttpResponse('您尚未登录,无法操作')
+    user = User.objects.get(id=request.session.get('user_id', None))
+    history = History.objects.filter(user=user)
+    i = 0
+    ot_ls = []
+    while i < history.__len__():
+        wa = WrongAnswer.objects.filter(answer_id=history[i])
+        k = 0
+        while k < wa.__len__():
+            ot_ls.append(wa[k].question)
+            k = k + 1
+        i = i + 1
+    return render(request, 'question/history.html', context={'output_list': ot_ls})
