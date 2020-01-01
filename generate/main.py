@@ -28,7 +28,8 @@ def answer(quantity: int, list: list, if_fraction=0):
 
 def main(quantity, operators, if_negative, if_pow, Max):
     g = QR.QuestGenerator()
-    g.generate(quantity=quantity, operators=operators, if_false=if_negative, if_pow=if_pow, Max=9)
+    g.generate(quantity=quantity, operators=operators,
+               if_false=if_negative, if_pow=if_pow, Max=9)
     with open('out.txt', 'w', encoding='utf-8') as f:
         for out in g.output_list:
             f.write(out + '\n')
