@@ -1,4 +1,4 @@
-from generate import OriginRequest as Qr
+from generate import OriginRequest as QR
 
 
 def answer(quantity: int, list: list, if_fraction=0):
@@ -13,22 +13,22 @@ def answer(quantity: int, list: list, if_fraction=0):
                 if st == list[i]:
                     correct += 1
                 else:
-                    print('incorrect')
+                    print('uncorrect')
             else:
                 st = input('answer:')
                 st = float(st)
                 if st == float(list[i]):
                     correct = correct + 1
                 else:
-                    print('incorrect')
+                    print('uncorrect')
         i = i + 1
     print('correct num', correct)
     print('wrong num', quantity - correct)
 
 
-def main(quantity, operators, if_negative, if_pow, _max):
-    g = Qr.QuestGenerator()
-    g.generate(quantity=quantity, operators=operators, if_false=if_negative, if_pow=if_pow, _max=9)
+def main(quantity, operators, if_negative, if_pow, Max):
+    g = QR.QuestGenerator()
+    g.generate(quantity=quantity, operators=operators, if_false=if_negative, if_pow=if_pow, Max=9)
     with open('out.txt', 'w', encoding='utf-8') as f:
         for out in g.output_list:
             f.write(out + '\n')
