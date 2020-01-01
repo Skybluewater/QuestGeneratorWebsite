@@ -1,10 +1,10 @@
 import random
 from copy import deepcopy
-from generate.solve import solvable
+from generate.solve import Solvable
 
 
 class BiTree:
-    def getOperOrder(self, ch):
+    def getoperorder(self, ch):
         if ch in ['+', '-']:
             return 0
         elif ch in ['*']:
@@ -21,7 +21,7 @@ class BiTree:
         self.rchild = None
         if self.node_type == 1:
             self.val = chr(self.val)
-            self.this_level = self.getOperOrder(self.val)
+            self.this_level = self.getoperorder(self.val)
 
     def set_lchild(self, lchild):
         self.lchild = lchild
@@ -75,14 +75,14 @@ class QuestGenerator:
         self.output_list = []
         self.deduplicate_set = set()
 
-    def generate(self, quantity=1, operators=7, if_false=False, if_pow=False, Pow_Operator=False, Max=9):
+    def generate(self, quantity=1, operators=7, if_false=False, if_pow=False, pow_operator=False, _max=9):
         operands = ['+', '-', '*', '/', '^']
-        sum = 0
-        while sum < quantity:
+        _sum = 0
+        while _sum < quantity:
             if if_false:
-                nums = [BiTree(0, random.randint(-Max, Max)) for _ in range(operators + 1)]
+                nums = [BiTree(0, random.randint(-_max, _max)) for _ in range(operators + 1)]
             else:
-                nums = [BiTree(0, random.randint(0, Max)) for _ in range(operators + 1)]
+                nums = [BiTree(0, random.randint(0, _max)) for _ in range(operators + 1)]
             if if_pow:
                 ops = [BiTree(1, ord(operands[random.randint(0, 4)])) for _ in range(operators)]
             else:
@@ -102,13 +102,13 @@ class QuestGenerator:
                 print('Duplicated!')
                 continue
             string = filled_ops[-1].to_string()
-            solve = solvable()
+            solve = Solvable()
             k = solve.Calculator(string)
             if k == 'not solvable':
                 continue
             k1 = self.round_up(round(float(k.numerator / k.denominator), 3))
-            sum = sum + 1
-            string = self.changePowOp(string, Pow_Operator)
+            _sum = _sum + 1
+            string = self.changepowop(string, pow_operator)
             print(string, '=', str(k),str(k1))
             self.output_list.append(string)
             self.output_list.append(str(k))
@@ -138,7 +138,7 @@ class QuestGenerator:
     def round_up(self, value):
         return round(value * 100) / 100
 
-    def changePowOp(self, string: str, Pow_Operator):
-        if Pow_Operator:
+    def changepowop(self, string: str, pow_operator):
+        if pow_operator:
             return string.replace('^', '**')
         return string

@@ -1,7 +1,7 @@
 from fractions import Fraction
 
 
-class solvable:
+class Solvable:
     prior = {'+': 0, '-': 0, '*': 1, '/': 1, '^': 2, '(': -1}
 
     def solve(self, num1: Fraction, num2: Fraction, operator):
