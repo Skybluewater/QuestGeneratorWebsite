@@ -190,7 +190,7 @@ def calculate(answer, as_list, num, if_fra, history):
                     s = s - 1
         else:
             try:
-                float(answer)
+                float(answer[i])
             except:
                 s = 'False'
                 return s, ot_ls
