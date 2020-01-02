@@ -75,33 +75,9 @@ def confirm(request, num, answer_id):
                 history.__set_end_time__()
                 time = history.end_time - history.start_time
                 as_list = Answer.objects.filter(answer_id=history)
-                i = 0
-                s = num
-                ot_ls = []
-                while i < answer.__len__():
-                    if history.if_fra == True:
-                        if not answer[i] == as_list[i].question.answer_Fraction:
-                            if WrongAnswer.objects.filter(question=as_list[i].question):
-                                s = s - 1
-                            else:
-                                wrong = WrongAnswer.objects.create()
-                                wrong.question = as_list[i].question
-                                wrong.answer_id = history
-                                ot_ls.append(as_list[i].question)
-                                wrong.save()
-                                s = s - 1
-                    else:
-                        if not float(answer[i]) == float(as_list[i].question.answer_float):
-                            if WrongAnswer.objects.filter(question=as_list[i].question):
-                                s = s - 1
-                            else:
-                                wrong = WrongAnswer.objects.create()
-                                wrong.question = as_list[i].question
-                                wrong.answer_id = history
-                                wrong.save()
-                                ot_ls.append(as_list[i].question)
-                                s = s - 1
-                    i = i + 1
+                s, ot_ls = calculate(answer, as_list, num, if_fra=history.if_fra, history=history)
+                if s == 'False':
+                    return HttpResponse('input string must be a string could be converted to float')
                 history.score = s
                 history.save()
                 context = {'output_list': ot_ls, 'score': s, 'time': time, 'if_fra': history.if_fra}
@@ -128,33 +104,9 @@ def confirm(request, num, answer_id):
                 history.__set_end_time__()
                 time = history.end_time - history.start_time
                 as_list = Answer.objects.filter(answer_id=history)
-                i = 0
-                s = num
-                ot_ls = []
-                while i < answer.__len__():
-                    if history.if_fra == True:
-                        if not answer[i] == as_list[i].question.answer_Fraction:
-                            if WrongAnswer.objects.filter(question=as_list[i].question):
-                                s = s - 1
-                            else:
-                                wrong = WrongAnswer.objects.create()
-                                wrong.question = as_list[i].question
-                                wrong.answer_id = history
-                                ot_ls.append(as_list[i].question)
-                                wrong.save()
-                                s = s - 1
-                    else:
-                        if not float(answer[i]) == float(as_list[i].question.answer_float):
-                            if WrongAnswer.objects.filter(question=as_list[i].question):
-                                s = s - 1
-                            else:
-                                wrong = WrongAnswer.objects.create()
-                                wrong.question = as_list[i].question
-                                wrong.answer_id = history
-                                wrong.save()
-                                ot_ls.append(as_list[i].question)
-                                s = s - 1
-                    i = i + 1
+                s, ot_ls = calculate(answer, as_list, num, if_fra=history.if_fra, history=history)
+                if s == 'False':
+                    return HttpResponse('input string must be a string could be converted to float')
                 history.score = s
                 history.save()
                 context = {'output_list': ot_ls, 'score': s, 'time': time, 'if_fra': history.if_fra}
@@ -192,33 +144,9 @@ def confirm(request, num, answer_id):
                     history.__set_end_time__()
                     time = history.end_time - history.start_time
                     as_list = Answer.objects.filter(answer_id=history)
-                    i = 0
-                    s = num
-                    ot_ls = []
-                    while i < answer.__len__():
-                        if history.if_fra == True:
-                            if not answer[i] == as_list[i].question.answer_Fraction:
-                                if WrongAnswer.objects.filter(question=as_list[i].question):
-                                    s = s - 1
-                                else:
-                                    wrong = WrongAnswer.objects.create()
-                                    wrong.question = as_list[i].question
-                                    wrong.answer_id = history
-                                    ot_ls.append(as_list[i].question)
-                                    wrong.save()
-                                    s = s - 1
-                        else:
-                            if not float(answer[i]) == float(as_list[i].question.answer_float):
-                                if WrongAnswer.objects.filter(question=as_list[i].question):
-                                    s = s - 1
-                                else:
-                                    wrong = WrongAnswer.objects.create()
-                                    wrong.question = as_list[i].question
-                                    wrong.answer_id = history
-                                    wrong.save()
-                                    ot_ls.append(as_list[i].question)
-                                    s = s - 1
-                        i = i + 1
+                    s, ot_ls = calculate(answer, as_list, num, if_fra=history.if_fra, history=history)
+                    if s == 'False':
+                        return HttpResponse('input string must be a string could be converted to float')
                     history.score = s
                     history.save()
                     context = {'output_list': ot_ls, 'score': s, 'time': time, 'if_fra': history.if_fra}
@@ -242,3 +170,39 @@ def youtube(request):
             k = k + 1
         i = i + 1
     return render(request, 'question/history.html', context={'output_list': ot_ls})
+
+
+def calculate(answer, as_list, num, if_fra, history):
+    i = 0
+    s = num
+    ot_ls = []
+    while i < answer.__len__():
+        if if_fra == True:
+            if not answer[i] == as_list[i].question.answer_Fraction:
+                if WrongAnswer.objects.filter(question=as_list[i].question):
+                    s = s - 1
+                else:
+                    wrong = WrongAnswer.objects.create()
+                    wrong.question = as_list[i].question
+                    wrong.answer_id = history
+                    ot_ls.append(as_list[i].question)
+                    wrong.save()
+                    s = s - 1
+        else:
+            try:
+                float(answer)
+            except:
+                s = 'False'
+                return s, ot_ls
+            if not float(answer[i]) == float(as_list[i].question.answer_float):
+                if WrongAnswer.objects.filter(question=as_list[i].question):
+                    s = s - 1
+                else:
+                    wrong = WrongAnswer.objects.create()
+                    wrong.question = as_list[i].question
+                    wrong.answer_id = history
+                    wrong.save()
+                    ot_ls.append(as_list[i].question)
+                    s = s - 1
+        i = i + 1
+    return s, ot_ls

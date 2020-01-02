@@ -75,7 +75,7 @@ def get_ls(operator: list, if_pow, if_neg):
             return rt_ls
     elif if_pow == 'Both':
         while i < operator.__len__():
-            quest = Question.objects.filter(question_operators_num=operator[i], question_if_pow=if_pow)
+            quest = Question.objects.filter(question_operators_num=operator[i], question_if_negative=if_neg)
             i += 1
             j = 0
             while j < quest.__len__():
@@ -92,3 +92,4 @@ def get_ls(operator: list, if_pow, if_neg):
                 rt_ls.append(quest[j])
                 j += 1
         return rt_ls
+
