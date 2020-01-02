@@ -31,12 +31,15 @@ class BiTree:
 
     def to_string(self, upper_level=0):
         if self.node_type == 1:
-            if upper_level > self.this_level or upper_level == self.this_level == 3 or upper_level == self.this_level \
+            if upper_level > self.this_level or upper_level == self.this_level == 3 \
+                    or upper_level == self.this_level \
                     == 4:
-                return '(' + self.lchild.to_string(self.this_level) + self.val + self.rchild.to_string(
+                return '(' + self.lchild.to_string(self.this_level) + \
+                       self.val + self.rchild.to_string(
                     self.this_level + 1) + ')'
             else:
-                return self.lchild.to_string(self.this_level) + self.val + self.rchild.to_string(self.this_level + 1)
+                return self.lchild.to_string(self.this_level) + self.val \
+                       + self.rchild.to_string(self.this_level + 1)
         if int(self.val) < 0:
             return '(' + str(self.val) + ')'
         return str(self.val)
@@ -75,7 +78,8 @@ class QuestGenerator:
         self.output_list = []
         self.deduplicate_set = set()
 
-    def generate(self, quantity=1, operators=7, if_false=False, if_pow=False, Pow_Operator=False, Max=9):
+    def generate(self, quantity=1, operators=7, if_false=False,
+                 if_pow=False, Pow_Operator=False, Max=9):
         operands = ['+', '-', '*', '/', '^']
         sum = 0
         while sum < quantity:
@@ -103,7 +107,7 @@ class QuestGenerator:
                 continue
             string = filled_ops[-1].to_string()
             solve = solvable()
-            k = solve.Calculator(string)
+            k = solve.calculator(string)
             if k == 'not solvable':
                 continue
             k1 = self.round_up(round(float(k.numerator / k.denominator), 3))

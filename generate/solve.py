@@ -29,7 +29,7 @@ class solvable:
             else:
                 return 'not solvable'
 
-    def Calculator(self, line):
+    def calculator(self, line):
         opt = []
         data = []
         i = 0
