@@ -46,7 +46,7 @@ def quest_generator(request):
 
 
 def string_change(string: str, potp):
-    if potp:
+    if potp == 'False':
         return string.replace('^', '**')
     return string
 
