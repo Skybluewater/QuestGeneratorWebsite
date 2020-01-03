@@ -1,6 +1,7 @@
 import random
 from copy import deepcopy
 from generate.solve import solvable
+from decimal import Decimal
 
 
 class BiTree:
@@ -113,7 +114,7 @@ class QuestGenerator:
             k1 = self.round_up(round(float(k.numerator / k.denominator), 3))
             sum = sum + 1
             string = self.changePowOp(string, Pow_Operator)
-            print(string, '=', str(k),str(k1))
+            print(string, '=', str(k), str(k1))
             self.output_list.append(string)
             self.output_list.append(str(k))
             self.output_list.append(str(k1))
@@ -140,7 +141,7 @@ class QuestGenerator:
             node.rchild = tmp
 
     def round_up(self, value):
-        return round(value * 100) / 100
+        return Decimal(value).quantize(Decimal('0.00'), rounding='ROUND_HALF_UP')
 
     def changePowOp(self, string: str, Pow_Operator):
         if Pow_Operator:
