@@ -1,6 +1,6 @@
 import unittest
-from .solve import solvable
-from .OriginRequest import BiTree, QuestGenerator
+from solve import solvable
+from OriginRequest import BiTree, QuestGenerator
 
 
 class QuesTest(unittest.TestCase):

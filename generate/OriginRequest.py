@@ -1,6 +1,6 @@
 import random
 from copy import deepcopy
-from generate.generator.solve import solvable
+from generate.solve import solvable
 from decimal import Decimal
 
 
