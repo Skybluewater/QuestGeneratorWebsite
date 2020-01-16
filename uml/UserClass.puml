@@ -1,0 +1,54 @@
+@startuml
+
+package django.db.models {
+    class Model
+}
+
+package django.forms{
+    class Form
+}
+
+package form{
+    class UserForm
+    class RegisterForm
+}
+
+package models{
+    class User
+}
+
+package captcha.fields{
+    class fields
+}
+
+class User{
+    gender:choice
+    name:models.CharField
+    password:models.CharField
+    email:models.EmailField
+    c_time:models.DateField
+    +__str__():models.CharField
+}
+
+class UserForm{
+    username:forms.CharField
+    password:forms.CharField
+}
+
+class RegisterForm{
+    gender:choice
+    username:forms.CharField
+    password1:forms.CharField
+    password2:forms.CharField
+    email:forms.EmailField
+    captcha:CaptchaField
+}
+
+RegisterForm --|> Form
+UserForm --|> Form
+RegisterForm --o fields
+User --|> Model
+RegisterForm -- User
+UserForm -- User
+
+@enduml

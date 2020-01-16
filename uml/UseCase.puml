@@ -1,0 +1,12 @@
+@startuml QA
+
+left to right direction
+
+actor 用户
+
+rectangle 题目生成器 {
+    用户 --> (输入参数出题)
+    用户 --> (将出的题保存)
+    用户 --> (回答所出题目)
+}
+@enduml

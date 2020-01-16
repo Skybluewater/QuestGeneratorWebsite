@@ -1,0 +1,43 @@
+@startuml
+
+package django.db.models{
+    class Model
+}
+
+package django.forms{
+    class Form
+}
+
+package models{
+    class Question
+}
+
+package form{
+    class DSform
+}
+
+class Question{
+    question
+    answer_float
+    answer_fraction
+    question_if_pow
+    question_if_negative
+    question_operators_num
+    c_time
+}
+
+class DSform{
+    quantity
+    optr
+    operators
+    if_pow
+    if_neg
+    if_fra
+    pow_type
+}
+
+Question --|> Model
+DSform --|> Form
+Question - DSform
+
+@enduml

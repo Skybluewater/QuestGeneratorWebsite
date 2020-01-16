@@ -1,0 +1,112 @@
+@startuml Question-class
+package django.forms {
+    class Form
+}
+
+package django.db.models {
+    class Model
+}
+
+package forms {
+    class DSForm
+    class Form5
+    class Form10
+    class Form20
+}
+
+DSForm --|> Form
+Form5 --|> Form
+Form10 --|> Form
+Form20 --|> Form
+
+package models {
+    class Question
+    class User
+    class Answer
+    class WrongAnswer
+    class History
+    User --|> Model
+    Question -|> Model
+    Answer --|> Model
+    WrongAnswer --|> Model
+    History --|> Model
+}
+
+class User{
+    gender:choice
+    name:models.CharField
+    password:models.CharField
+    email:models.EmailField
+    c_time:models.DateField
+    +__str__():models.CharField
+}
+
+class Question{
+    question
+    answer_float
+    answer_fraction
+    question_if_pow
+    question_if_negative
+    question_operators_num
+    c_time
+}
+
+Answer "n"---"1" Question
+Answer "n"---"1" User
+
+WrongAnswer "n"---"1" Question
+WrongAnswer "n"---"1" User
+
+History "n"--"1" User
+
+class History{
+    user:User
+    start_time:models.DateTimeField
+    end_time:models.DateTimeField
+    score:models.IntegerField
+    quantity:models.IntegerField
+    if_fra:models.BooleanField
+    +__set_end_time__()
+}
+
+class Answer{
+    question:Question
+    answer_id:History
+}
+
+class WrongAnswer{
+    question:Question
+    answer_id:History
+    answer_if_answered_again:BooleanField
+    type:BooleanField
+}
+
+class DSForm{
+    quantity
+        optr
+        operators
+        if_pow
+        if_neg
+        if_fra
+        pow_type
+}
+
+class Form5{
+    Kt1:forms.CharField
+    ...
+    Kt5:forms.CharField
+}
+
+class Form10{
+    Kt1:forms.CharField
+    ...
+    Kt10:forms.CharField
+}
+
+class Form20{
+    Kt1:forms.CharField
+    ...
+    Kt20:forms.CharField
+}
+
+@enduml

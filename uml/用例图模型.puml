@@ -1,0 +1,21 @@
+@startuml QA
+
+left to right direction
+
+actor 注册用户
+' actor 管理员
+' actor 业务管理员
+' actor 系统
+actor 非注册用户
+
+rectangle 题目生成网页 {
+    非注册用户 ---> (出题)
+    非注册用户 ---> (注册)
+    注册用户 ---> (登录)
+    注册用户 ---> (出题)
+    注册用户 ---> (查看历史记录)
+    注册用户 ---> (做题)
+    注册用户 ---> (修改密码)
+}
+
+@enduml

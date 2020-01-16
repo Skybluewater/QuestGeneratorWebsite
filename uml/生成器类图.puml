@@ -1,0 +1,39 @@
+@startuml
+
+class BiTree
+class QuestGenerator
+class solvable
+
+class BiTree{
+    node_type:int
+    val:int
+    lchild:BiTree
+    rchild:BiTree
+    +getOperOrder():int
+    +__init__()
+    +set_lchild()
+    +set_rchild()
+    +to_string():str
+}
+
+class QuestGenerator{
+    output_list:list
+    deduplicate_set:set
+    +__init__()
+    +generate()
+    +deduplicate():Bool
+    +format_expression()
+    +round_up():float
+    +changePowOp():str
+}
+
+class solvable{
+    prior:dic
+    +solve():Fraction/str
+    +Calculator():int
+}
+
+BiTree -- QuestGenerator
+QuestGenerator -- solvable
+
+@enduml
