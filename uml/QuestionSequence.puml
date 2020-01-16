@@ -1,0 +1,6 @@
+@startuml
+actor 用户
+用户 --> generator: 选题目参数，生成题目
+generator --> confirm: 做题
+confirm --> score: 显示分数和用时
+@enduml

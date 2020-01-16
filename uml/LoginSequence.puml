@@ -1,0 +1,7 @@
+@startuml
+actor 用户
+用户 --> login: 发出登录请求
+login --> register:如果没有注册，注册
+login --> confirm:忘记密码，就重置密码
+login --> render:成功的话就进入主页
+@enduml

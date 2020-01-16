@@ -1,0 +1,9 @@
+@startuml sequence
+actor 用户
+用户 --> generate: 选择题目参数
+generate --> 用户: 生成题目
+generate --> solve: 计算答案
+generate --> answer: 存题目
+用户 --> answer: 答题
+answer --> 用户: 给出错题数量
+@enduml
