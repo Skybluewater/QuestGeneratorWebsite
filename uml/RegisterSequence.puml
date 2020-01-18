@@ -1,6 +1,6 @@
 @startuml
 actor 用户
-用户 --> login: 发出登录请求
-用户 --> login: 填写用户名和密码
-login --> redirect: 进入主界面
+用户 --> register: 发出注册请求
+用户 --> register: 填写注册信息
+register --> redirect: 回到登录界面
 @enduml
