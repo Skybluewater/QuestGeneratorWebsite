@@ -1,9 +1,21 @@
-@startuml sequence
+@startuml
 actor 用户
-用户 --> generate: 选择题目参数
-generate --> 用户: 生成题目
-generate --> solve: 计算答案
-generate --> answer: 存题目
-用户 --> answer: 答题
-answer --> 用户: 给出错题数量
+用户 -> main: 输入参数生成题目
+main -> generate
+generate -> randint
+generate -> set_lchild
+generate ->set_rchild
+generate -> deduplicate
+deduplicate -> format_expression
+format_expression -> deduplicate
+deduplicate -> generate
+generate -> to_string
+generate -> calculator
+calculator -> solve
+solve -> calculator
+calculator -> generate
+generate -> round_up
+generate -> changepowop
+generate -> main
+main -> answer
 @enduml

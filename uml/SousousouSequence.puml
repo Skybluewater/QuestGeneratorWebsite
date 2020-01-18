@@ -1,6 +1,6 @@
 @startuml
 actor 用户
-用户 --> 主界面: 选择出题或做题
-主界面 --> sousousou: 如果选择出题，出题
-主界面 --> question: 如果选择做题，开始做题
+用户 --> quest_generator: 发出出题请求
+quest_generator --> get_ls: 填写题目参数
+get_ls --> 用户: 生成题目
 @enduml
