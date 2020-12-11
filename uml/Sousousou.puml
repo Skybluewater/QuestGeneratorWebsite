@@ -1,0 +1,47 @@
+@startuml sousousou-class
+
+package django.db.models {
+     class Model
+}
+
+package django.utils {
+      class timezone
+}
+
+package models {
+    class History {
+        user
+        start_time
+        end_time
+        score
+        quantity
+        if_fra
+    }
+    class user {
+        gender
+        name
+        password
+        email
+        c_time
+    }
+}
+
+package forms {
+    class DSform{
+        quantity
+        optr
+        operators
+        if_pow
+        if_neg
+        if_fra
+        pow_type
+    }
+}
+
+History --|> Model
+History --|> timezone
+History -- forms.DSform
+user "1" -- "n" History
+DSform --|> django.forms.Form
+
+@enduml

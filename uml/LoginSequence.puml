@@ -1,0 +1,6 @@
+@startuml
+actor 用户
+用户 --> login: 发出登录请求
+用户 --> login: 填写用户名和密码
+login --> redirect: 进入主界面
+@enduml

@@ -1,0 +1,6 @@
+@startuml
+actor 用户
+用户 --> register: 发出注册请求
+用户 --> register: 填写注册信息
+register --> redirect: 回到登录界面
+@enduml

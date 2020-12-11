@@ -1,0 +1,9 @@
+@startuml
+actor 用户
+用户 --> generator: 发出答题请求
+generator --> get_ls: 填写题目参数
+get_ls --> 用户: 生成题目
+用户 --> confirm: 答题
+confirm --> calculate: 计算用时，分数和错题
+calculate --> 用户: 显示用时，分数和错题
+@enduml
