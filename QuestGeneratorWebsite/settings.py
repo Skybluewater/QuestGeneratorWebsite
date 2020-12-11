@@ -123,11 +123,11 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
 
-EMAIL_HOST = 'smtp.qq.com'
+EMAIL_HOST = ''
 # 改为你自己的邮箱名！
-EMAIL_HOST_USER = '2274296423@qq.com'
+EMAIL_HOST_USER = '***@qq.com'
 # 你的邮箱密码
-EMAIL_HOST_PASSWORD = 'bfszzgnisdewdice'
+EMAIL_HOST_PASSWORD = ''
 # 发送邮件的端口
 EMAIL_PORT = 25
 # 是否使用 TLS
